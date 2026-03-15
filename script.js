@@ -4,26 +4,29 @@ const btnCurto = document.querySelector(".app__card-button--curto");
 const btnLongo = document.querySelector(".app__card-button--longo");
 const banner = document.querySelector(".app__image");
 const titulo = document.querySelector(".app__title");
-
-const btn = document.querySelector(".app__card-button");
+const btns = document.querySelectorAll(".app__card-button");
 
 btnFoco.addEventListener("click", () => {
     alterarContexto("foco");
-
-    
+    btnFoco.classList.add("active");
 });
 
 btnCurto.addEventListener("click", () => {
     alterarContexto("descanso-curto");
-     
+    btnCurto.classList.add("active");
 });
 
 btnLongo.addEventListener("click", () => {
     alterarContexto("descanso-longo");
+    btnLongo.classList.add("active");
 });
 
 
 function alterarContexto(contexto){
+    btns.forEach(function (btn){
+        btn.classList.remove("active")
+    })
+
     html.setAttribute("data-contexto", contexto);
     banner.setAttribute("src", `/imagens/${contexto}.png`);
     
@@ -47,5 +50,3 @@ function alterarContexto(contexto){
             break;
     }
 }
-
-const pg = document.getElementById
